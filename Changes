@@ -1,5 +1,11 @@
 # Revision history for WWW::Search::DrugBank
 
+version: 0.02
+date:    2006-07-01
+changes:
+  - add missing prereqs to Makefile.PL, which caused CPAN Testers
+    failures
+
 version: 0.01
 date:    2006-06-19
 changes:

@@ -4,7 +4,7 @@ use base 'WWW::Search';
 use warnings;
 use strict;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 use WWW::SearchResult;
 
@@ -635,7 +635,6 @@ sub native_retrieve_some {
   $hit->url( $url );
 
   push @{$self->{cache}}, $hit;
-
   $self->{_current_url} = undef;
   return 1;
 }
@@ -735,14 +734,18 @@ sub _fetch_data {
 
 sub _url {
   my( $self, $id ) = @_;
-  return sprintf 'http://redpoll.pharmacy.ualberta.ca/drugbank/cgi-bin/getCard.cgi?CARD=%s.txt', $id;
+  return sprintf 'http://www.drugbank.ca/cgi-bin/getCard.cgi?CARD=%s.txt', $id;
 }
 
 sub _fields { {
   'Creation Date' => { fields => [ 'creation_date' ], has_url => 0 },
   'Last Update' => { fields => [ 'last_update' ], has_url => 0 },
+
   'Accession Number' => { fields => [ 'accession_number' ], has_url => 0 },
-  'Generic Name' => { fields => [ 'generic_name', 'name' ], has_url => 0 },
+  'Secondary Accession Number' => { fields => ['accession_number', 'secondary_accession_number' ], has_url => 0 },
+  'Primary Accession Number' => { fields => [ 'accession_number', 'primary_accession_number' ], has_url => 0 },
+
+  'Name' => { fields => [ 'generic_name', 'name' ], has_url => 0 },
   'Brand Names/Synonyms' => { fields => [ 'brand_names', 'synonyms' ], has_url => 0 },
   'Brand Name Mixtures' => { fields => [ 'brand_name_mixtures' ], has_url => 0 },
   'Chemical IUPAC Name' => { fields => [ 'chemical_iupac_name', 'iupac_name' ], has_url => 0 },

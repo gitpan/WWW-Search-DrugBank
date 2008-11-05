@@ -1,5 +1,5 @@
-WWW::Search::DrugBank 0.02
-==========================
+WWW::Search::DrugBank
+=====================
 
 This is a screen scraper for querying the University of Alberta's
 DrugBank database.
@@ -68,7 +68,7 @@ You can also look for information at:
 
 COPYRIGHT AND LICENCE
 
-Copyright (C) 2006 David Iberri
+Copyright (C) 2008 David Iberri
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
